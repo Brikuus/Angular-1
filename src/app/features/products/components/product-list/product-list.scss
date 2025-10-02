@@ -1,17 +1,81 @@
 #productBox {
-  border: 1px solid black;
+  border: 1px solid #EEC4C9;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
-
+  justify-content: space-between;
+  align-items: inherit;
 }
 
-
 .product-card {
-  border: 1px solid black;
   display: flex;
   padding: 2em;
   flex-direction: column;
   background-color: #EEC4C9;
+  border-radius: 2em;
+  box-shadow: 5px 5px 15px rgba(205, 150, 170, 20);
+  margin: 1em;
 }
+.image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 2em;
+  height: 300px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e3b1b7;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+}
+
+.boxUp {
+  border-radius: 2em 2em 0em 0em;
+  align-items: center;
+  background-color: #e3b1b7;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+}
+
+.boxDown {
+  display: flex;
+  justify-content: center;
+  border-radius: 0em 0em 2em 2em;
+  align-items: center;
+  background-color: #e3b1b7;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+  padding-bottom: 1em;
+}
+
+.Acheter {
+  width: 100%;
+  height: 100%;
+  font-size: 1.5em;
+  background-color: #EEC4C9;
+  border-radius: 1em;
+  border: 1.5px solid #EEC4C9;
+}
+
+.Acheter:hover {
+  background-color: #e3b1b7;
+  transform: scale(0.95);
+}
+
+.Rupture{
+  width: 100%;
+  height: 100%;
+  font-size: 1.5em;
+  background-color: #EEC4C9;
+  border-radius: 1em;
+  border: 1.5px solid #EEC4C9;
+}
+
+.Rupture:hover {
+  background-color: #e3b1b7;
+  transform: scale(0.95);
+  text-decoration: line-through;
+}
+
+

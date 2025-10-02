@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CurrencyPipe} from '@angular/common';
-import {ProductModel} from '../../../../models/product.model';
+import {ProductModel} from '../../models/product.model';
 
 
 
