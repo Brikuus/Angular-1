@@ -1,0 +1,45 @@
+<p>product-list works!</p>
+<section id="productBox">
+
+
+
+  @for(product of products; track product.id) {
+
+      <div class="product-card">
+        <img [src]="product.imageUrl">
+        <p> {{ product.description }}</p>
+        <p>{{ product.price   | currency: 'EUR': 'symbol': '1.2-2': 'fr'}}</p>
+        <p>{{ product.rating }}</p>
+
+        @if (product.inStock) {
+          <p class="in-stock"> ✅ En stock</p>
+        } @else {
+          <p class="out-of-stock"> ❌ Rupture de stock</p>
+        }
+
+        @switch (product.category) {
+          @case ('electronics') {
+            <span class="badge blue">📱 High-tech</span>
+          }
+          @case ('clothing') {
+            <span class="badge green">👕 Mode</span>
+          }
+          @case ('sports'){
+            <span class="badge red">⚽ Sport</span>
+          }
+          @case ('gaming'){
+            <span class="badge gray">🎮 Jeux vidéo</span>
+          }
+          @default {
+            <span class="badge yellow">📦 Autre</span>
+          }
+
+        }
+      </div>
+  } @empty {
+    <p>Aucun produit disponnible...</p>
+  }
+
+</section>
+<p>total de produits encore en stock : {{ nbProduitInStock() }}</p>
+<p>Total de produits : {{ products.length }}</p>

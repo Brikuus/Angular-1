@@ -1,0 +1,17 @@
+#productBox {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+
+}
+
+
+.product-card {
+  border: 1px solid black;
+  display: flex;
+  padding: 2em;
+  flex-direction: column;
+  background-color: #EEC4C9;
+}

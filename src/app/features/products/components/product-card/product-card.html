@@ -1,0 +1,8 @@
+<div class="product-card">
+  <h3>{{ title }}</h3>
+  <p>Prix normal : {{ price }}£</p>
+  <p>Prix avec réduction : {{ getDiscountPrice() }}£</p>
+  <p>Stock : {{ inStock ? 'Disponnible' :'Rupture' }}</p>
+  <p>Caractéristiques : {{ features.length }} options</p>
+  <button (click)="onBuyClick()">Acheter</button>
+</div>
