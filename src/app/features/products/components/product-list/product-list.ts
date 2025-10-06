@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import {CurrencyPipe} from '@angular/common';
 import {ProductModel} from '../../models/product.model';
+import {RouterLink} from '@angular/router';
 
 
 
 @Component({
   selector: 'app-product-list',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.scss']
 })

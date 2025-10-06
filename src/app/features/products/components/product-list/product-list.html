@@ -10,6 +10,7 @@
         <h3>{{ product.name }}</h3>
         <div class="boxUp">
           <h4>description :</h4>
+          <a [routerLink]="['/products', '{{ product.id }}']">{{ product.description}}</a>
           <p>{{ product.description }}</p>
         </div>
         <div class="box">
