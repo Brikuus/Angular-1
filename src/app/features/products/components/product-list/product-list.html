@@ -1,62 +1,19 @@
-<p>product-list works!</p>
-<section id="productBox">
+<div class="product-list-container">
 
+  @if (products.length > 0) {
+    <div class="products-grid">
+      @for (product of products; track product.id) {
 
+        <app-product-card [product]="product"></app-product-card>
+      }
+    </div>
 
-  @for(product of products; track product.id) {
-
-      <div class="product-card">
-        <img class="image" [src]="product.imageUrl">
-        <h3>{{ product.name }}</h3>
-        <div class="boxUp">
-          <h4>description :</h4>
-          <a [routerLink]="['/products', '{{ product.id }}']">{{ product.description}}</a>
-          <p>{{ product.description }}</p>
-        </div>
-        <div class="box">
-          <p>prix : {{ product.price   | currency: 'EUR': 'symbol': '1.2-2': 'fr'}}</p>
-
-          @if (product.inStock) {
-            <p class="in-stock"> ✅ En stock</p>
-          } @else {
-            <p class="out-of-stock"> ❌ Rupture de stock</p>
-          }
-
-        </div>
-        <div class="box">
-          <p>{{ product.rating }} / 5 ⭐</p>
-
-          @switch (product.category) {
-            @case ('electronics') {
-              <span class="badge blue">📱 High-tech</span>
-            }
-            @case ('clothing') {
-              <span class="badge green">👕 Mode</span>
-            }
-            @case ('sports'){
-              <span class="badge red">⚽ Sport</span>
-            }
-            @case ('gaming'){
-              <span class="badge gray">🎮 Jeux vidéo</span>
-            }
-            @default {
-              <span class="badge yellow">📦 Autre</span>
-            }
-
-          }
-        </div>
-        <div class="boxDown">
-          @if (product.inStock) {
-            <button class="Acheter">Acheter</button>
-          } @else {
-            <button class="Rupture">Rupture de stock</button>
-          }
-        </div>
-      </div>
-  } @empty {
-    <p>Aucun produit disponnible...</p>
+    <div class="product-stats">
+      <p><strong>{{ getTotalProducts() }}</strong> produits au total</p>
+      <p><strong>{{ getInStockCount() }}</strong> produits en stock</p>
+    </div>
+  } @else {
+    <p class="no-products">Aucun produit disponible pour le moment</p>
   }
+</div>
 
-</section>
-<p>total de produits encore en stock : {{ nbProduitInStock() }}</p>
-<p>Total de produits : {{ products.length }}</p>

@@ -1,0 +1,27 @@
+h1{
+  display: flex;
+  padding: 2em;
+  background-color: #fce1e4;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+
+  background: linear-gradient(#f7e1e4, #e3b1b7, #f7e1e4);
+  padding: 50px;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  padding: 0em 1em 0em 1em;
+  font-size: 1.2em;
+}
+
+a:hover {
+  box-shadow: 5px 5px 15px rgba(205, 150, 170, 20);
+}
+
+
+

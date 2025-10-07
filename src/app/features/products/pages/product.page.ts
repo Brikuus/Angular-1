@@ -6,9 +6,13 @@ import {ProductList} from '../components/product-list/product-list';
   standalone: true,
   imports: [ProductList],
   template: `
-    <h2>Nos Produits</h2>
+    <h2>Notre catalogue</h2>
     <app-product-list></app-product-list>
-  `
+  `,
+  styles: 'h2 {' +
+    'text-align: center;' +
+    'padding-bottom: 1em;' +
+    '}'
 })
 export default class ProductPage {
 

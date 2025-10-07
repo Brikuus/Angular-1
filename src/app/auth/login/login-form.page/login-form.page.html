@@ -1,0 +1,21 @@
+<div>
+  <form [formGroup]="loginForm">
+    <label for="email">
+      E-mail :
+      <input id="email" type="text" formControlName="email" [attr.aria-invalid]="loginForm.controls.email.invalid" aria-describedby="email-error">
+    </label>
+    @if (loginForm.controls.email.invalid && loginForm.controls.email.touched) {
+      <p id="email-error" class="error">Format d'email invalide</p>
+    }
+
+    <label>
+      Mot de passe :
+      <input id="password" type="text" formControlName="password" [attr.aria-invalid]="loginForm.controls.password.invalid" aria-describedby="password-error">
+    </label>
+    @if (loginForm.controls.password.invalid && loginForm.controls.password.touched) {
+        <p id="password-error" class="error">Format de mot de passe invalide</p>
+    }
+
+    <button type="submit" [disabled]="loginForm.invalid">Envoyer</button>
+  </form>
+</div>

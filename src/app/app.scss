@@ -1,1 +1,25 @@
 
+
+main {
+  padding: 1em;
+  display: inline-flex;
+  justify-content: space-between;
+  min-height: fit-content;
+}
+
+body {
+  width: 100%;
+
+}
+
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(#f7e1e4, #e3b1b7);
+    text-align: center;
+    padding: 3.5em;
+  }
+

@@ -1,8 +1,42 @@
+
 <div class="product-card">
-  <h3>{{ title }}</h3>
-  <p>Prix normal : {{ price }}£</p>
-  <p>Prix avec réduction : {{ getDiscountPrice() }}£</p>
-  <p>Stock : {{ inStock ? 'Disponnible' :'Rupture' }}</p>
-  <p>Caractéristiques : {{ features.length }} options</p>
-  <button (click)="onBuyClick()">Acheter</button>
+  <div class="product-image-container">
+    <img [src]="product().imageUrl" [alt]="product().name" class="product-image">
+
+    <div class="product-category">
+      <button (click)="onToggleFavorite()" class="favorite-btn">❤️</button>
+
+      <span>{{ product().category }}</span>
+
+    </div>
+
+  </div>
+
+  <div class="product-info">
+
+    <h3 class="product-name">{{ product().name }}</h3>
+
+    <p class="product-description">{{ product().description }}</p>
+
+    <div class="product-meta">
+
+      <span class="product-price">{{ product().price }}€</span>
+
+      <span class="product-rating">{{ product().rating }}/5 ⭐</span>
+    </div>
+
+
+    <div class="product-actions">
+
+      @if (product().inStock) {
+        <button (click)="onAddToCart()" class="btn" id="primary">
+          Ajouter au panier
+        </button>
+      } @else {
+        <button [disabled]="true" class="btn" id="disabled">
+          En rupture
+        </button>
+      }
+    </div>
+  </div>
 </div>
