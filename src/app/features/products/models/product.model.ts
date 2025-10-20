@@ -7,4 +7,5 @@ export type ProductModel = {
   category: string;
   inStock: boolean;
   rating: number;
+  reviews?: number[];
 }

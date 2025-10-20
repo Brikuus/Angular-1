@@ -2,11 +2,17 @@
   <app-header></app-header>
 </header>
 
-<body>
-  <main>
+<main>
+  <body>
+    @if(loading) {
+      <div class="loader-backdrop">
+        <div class="loader-text">Chargement...</div>
+      </div>
+    }
+
     <router-outlet></router-outlet>
-  </main>
-</body>
+  </body>
+</main>
 
 <footer>
   <app-footer></app-footer>

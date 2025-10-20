@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   template: `
     <p>
-      admin works!
+      Vous aussi vous êtes une brique ?
     </p>
   `,
   styles: ``

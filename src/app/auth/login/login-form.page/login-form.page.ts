@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import {FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {LoginFormModel} from '../../models/profile-form.model';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login-form.page.html',
   styleUrl: './login-form.page.scss'
 })
@@ -16,4 +17,15 @@ export default class LoginFormPage {
     email: this.fbb.control('', [Validators.required, Validators.email]),
     password: this.fbb.control('', [Validators.required, Validators.minLength(6), Validators.pattern(/[0-9A-Za-z]*/)])
   });
+
+  setKey() {
+    localStorage.setItem('accessKey', 'iLoveSalmon');
+  }
+  getKey() {
+    return localStorage.getItem('accessKey');
+  }
+
+  deco() {
+    localStorage.removeItem('accessKey');
+  }
 }

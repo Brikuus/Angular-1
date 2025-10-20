@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   template: `
     <p>
-      error.page.ts works!
+      Erreur 404 - Page Not Found
     </p>
   `,
   styles: ``

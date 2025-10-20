@@ -1,14 +1,24 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-about.page',
+  selector: 'app-about',
   imports: [],
   template: `
-    <p>
-      about.page works!
-    </p>
+    <div>
+      <p>
+        Nos produits sont 100% fabriqués chez Brique
+      </p>
+    </div>
+
   `,
-  styles: ``
+  styles: `
+  div{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 5em;
+  }
+  `
 })
 export default class AboutPage {
 

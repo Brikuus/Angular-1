@@ -1,3 +1,16 @@
+.register-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5em;
+}
+
 .error {
   color: red;
   font-size: 0.85rem;

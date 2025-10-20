@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 import SettingPage from '../features/products/pages/setting.page';
-import {helloResolver} from './resolvers/hello-resolver';
-import ProductPage from '../features/products/pages/product.page';
-import {AdminPage} from '../features/products/pages/admin.page';
-import {authGuard} from './guards/auth-guard';
+import { goodbyeResolver, helloResolver } from './resolvers/hello-resolver';
+import { AdminPage } from '../features/products/pages/admin.page';
+import { AuthGuard } from './guards/auth-guard';
+import ErrorPage from '../core/pages/error.page';
+import { productResolver } from './resolvers/products-resolver';
 
 
 export const routes: Routes = [
@@ -11,7 +12,7 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('../features/home/pages/home.page'),
   },
-  { path: 'products', component: ProductPage},
+  { path: 'products', loadComponent: () => import('../features/products/pages/product.page'), resolve: {products: productResolver }},
   {
     path: 'error',
   loadComponent: () => import('../core/pages/error.page')
@@ -37,6 +38,14 @@ export const routes: Routes = [
   loadComponent: () => import('../auth/login/login-form.page/login-form.page'),
   },
   { path: 'hello', component: SettingPage, resolve: { message: helloResolver } },
-  { path: 'admin', component: AdminPage, canActivate: [authGuard] },
+  { path: 'goodbye', component: SettingPage, resolve: { message: goodbyeResolver } },
+  { path: 'admin', component: AdminPage, canActivate: [AuthGuard] },
+  {
+    path: 'unauthorized',
+    component: ErrorPage
+  },
+  {
+    path: 'bin', loadComponent: () => import('../features/products/pages/poubelle')
+  },
   { path: '**', redirectTo: 'error' }
 ];

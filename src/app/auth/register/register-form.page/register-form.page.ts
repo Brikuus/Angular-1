@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormGroup, Validators, NonNullableFormBuilder } fr
 import {RegisterFormModel} from '../../models/profile-form.model';
 
 
+
 @Component({
   selector: 'app-profile-form',
   imports: [ReactiveFormsModule],
@@ -26,5 +27,16 @@ export default class ProfileForm {
     password: this.fb.control('', [Validators.required, Validators.minLength(6), Validators.pattern(/[0-9A-Za-z]*/)]),
     confirmPassword: this.fb.control('',[Validators.required, Validators.minLength(6), Validators.pattern(/[0-9A-Za-z]*/)])
   });
+
+  setKey() {
+    localStorage.setItem('accessKey', 'iLoveSalmon');
+  }
+  getKey() {
+    return localStorage.getItem('accessKey');
+  }
+
+  deco() {
+    localStorage.removeItem('accessKey');
+  }
 
 }
