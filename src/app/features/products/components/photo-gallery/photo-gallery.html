@@ -1,0 +1,54 @@
+<!-- user-list.html -->
+<div class="container">
+  <div class="header">
+    <h2>Liste des photos</h2>
+    <button
+      (click)="refresh()"
+      [disabled]="isLoading()"
+      class="refresh-btn">
+      {{ isLoading() ? 'Chargement...' : 'Actualiser' }}
+    </button>
+  </div>
+
+  <!-- État de chargement -->
+  @if (isLoading()) {
+    <div class="loading-overlay">
+      <div class="loading-text">Chargement des utilisateurs...</div>
+    </div>
+  }
+
+  <!-- Gestion d'erreur -->
+  @if (error()) {
+    <div class="error">
+      <p>{{ error() }}</p>
+      <button (click)="refresh()">Réessayer</button>
+    </div>
+  }
+
+  <!-- Affichage des utilisateurs -->
+  @if (!isLoading() && !error() && photos().length > 0) {
+    <div class="users-grid">
+      @for (photo of photos(); track photo.id) {
+        <div class="user-card">
+          <div class="head">
+            <img [src]="photo.download_url" class="url">
+          </div>
+
+          <h3> By {{ photo.author }}</h3>
+
+          @if (photo.liked) {
+            <button (click)="unlike(photo)" class="like">❤️ Like</button>
+          } @else {
+            <button (click)="like(photo)" class="like">🤍 Like</button>
+          }
+          <div class="likes-display">
+            <p>{{ likeMessage(photo) }}</p>
+          </div>
+        </div>
+
+
+
+      }
+    </div>
+  }
+</div>

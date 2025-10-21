@@ -1,0 +1,26 @@
+
+button {
+  background-color: #EEC4C9;
+  border-radius: 1em;
+  border: 1.5px solid #EEC4C9;
+  margin: 0.5em;
+  padding: 2em;
+}
+
+button:hover {
+  background-color: #e3b1b7;
+  transform: scale(0.9);
+}
+
+.user-card {
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+
+}
+
+.user-grid {
+  display: flex;
+
+}
+

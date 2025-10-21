@@ -18,9 +18,11 @@ import {ActivatedRoute, RouterLink} from '@angular/router';
   div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 2em;
-    width: 100%;
+
+    width: 96.8%;
+    flex-wrap: wrap;
   }`
 })
 export default class SettingPage {

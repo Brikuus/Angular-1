@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import {Counter} from '../components/counter/counter';
 import {Temperature} from '../components/temperature/temperature';
 import {LikeCounter} from '../components/like-counter/like-counter';
+import {UserList} from '../components/user-list/user-list';
 
 @Component({
   selector: 'app-poubelle',
   imports: [
     Counter,
     Temperature,
-    LikeCounter
+    LikeCounter,
+    UserList
   ],
   template: `
     <app-counter></app-counter>
@@ -16,6 +18,8 @@ import {LikeCounter} from '../components/like-counter/like-counter';
     <app-temperature></app-temperature>
 
     <app-like-counter></app-like-counter>
+
+    <app-user-list></app-user-list>
   `,
   styles: ``
 })

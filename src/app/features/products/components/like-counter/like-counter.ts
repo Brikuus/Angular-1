@@ -18,7 +18,7 @@ export class LikeCounter implements OnInit {
     return `${count} personnes aiment`;
   });
 
-  isPopular = computed(() => this.likes() >= 10);
+  //isPopular = computed(() => this.likes() >= 10);
 
   ngOnInit() {
     effect(() => {

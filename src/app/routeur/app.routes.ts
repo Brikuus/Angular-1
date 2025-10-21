@@ -47,5 +47,8 @@ export const routes: Routes = [
   {
     path: 'bin', loadComponent: () => import('../features/products/pages/poubelle')
   },
+  {
+    path: 'photoGallery', loadComponent: () => import('../features/products/pages/photos')
+  },
   { path: '**', redirectTo: 'error' }
 ];
