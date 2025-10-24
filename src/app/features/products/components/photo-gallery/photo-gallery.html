@@ -12,9 +12,7 @@
 
   <!-- État de chargement -->
   @if (isLoading()) {
-    <div class="loading-overlay">
-      <div class="loading-text">Chargement des utilisateurs...</div>
-    </div>
+    <global-spinner></global-spinner>
   }
 
   <!-- Gestion d'erreur -->
@@ -45,8 +43,6 @@
             <p>{{ likeMessage(photo) }}</p>
           </div>
         </div>
-
-
 
       }
     </div>

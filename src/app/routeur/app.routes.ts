@@ -4,7 +4,9 @@ import { goodbyeResolver, helloResolver } from './resolvers/hello-resolver';
 import { AdminPage } from '../features/products/pages/admin.page';
 import { AuthGuard } from './guards/auth-guard';
 import ErrorPage from '../core/pages/error.page';
-import { productResolver } from './resolvers/products-resolver';
+
+import {productDetailResolver} from './resolvers/product-detail-resolver';
+import {productListResolver} from './resolvers/product-list-resolver';
 
 
 export const routes: Routes = [
@@ -12,18 +14,27 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('../features/home/pages/home.page'),
   },
-  { path: 'products', loadComponent: () => import('../features/products/pages/product.page'), resolve: {products: productResolver }},
   {
     path: 'error',
-  loadComponent: () => import('../core/pages/error.page')
+    loadComponent: () => import('../core/pages/error.page')
+  },
+  {
+    path: 'products',
+    loadComponent: () => import("../features/products/pages/product.page"),
+    resolve: {products: productListResolver}
   },
   {
     path: 'products/:id',
-  loadComponent: () => import('../features/products/pages/product-detail.page')
+    loadComponent: () => import("../features/products/pages/product-detail.page"),
+    resolve: {product: productDetailResolver}
+  },
+  {
+    path: 'cart',
+    loadComponent: ()=> import("../features/products/pages/cart.page")
   },
   {
     path: 'about',
-  loadComponent: () => import('../features/products/pages/about.page')
+    loadComponent: () => import('../features/products/pages/about.page')
   },
   {
     path: 'setting',
@@ -31,11 +42,11 @@ export const routes: Routes = [
   },
   {
     path: 'register',
-  loadComponent: () => import('../auth/register/register-form.page/register-form.page'),
+    loadComponent: () => import('../auth/register/register-form.page/register-form.page'),
   },
   {
     path: 'login',
-  loadComponent: () => import('../auth/login/login-form.page/login-form.page'),
+    loadComponent: () => import('../auth/login/login-form.page/login-form.page'),
   },
   { path: 'hello', component: SettingPage, resolve: { message: helloResolver } },
   { path: 'goodbye', component: SettingPage, resolve: { message: goodbyeResolver } },

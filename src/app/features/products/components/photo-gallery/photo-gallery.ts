@@ -1,6 +1,7 @@
 import {Component, computed, inject, OnInit, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {delay, firstValueFrom} from 'rxjs';
+import {GlobalSpinner} from '../../../../core/components/global-spinner/global-spinner';
 
 type Photo = {
   id: number,
@@ -14,7 +15,9 @@ type Photo = {
 
 @Component({
   selector: 'app-photo-gallery',
-  imports: [],
+  imports: [
+    GlobalSpinner
+  ],
   templateUrl: './photo-gallery.html',
   styleUrl: './photo-gallery.scss'
 })
@@ -25,7 +28,6 @@ export  class PhotoGallery implements OnInit {
   photos = signal<Photo[]>([]);
   isLoading = signal<boolean>(false);
   error = signal<string | null>(null);
-  likeUser = signal(false);
 
   ngOnInit(): void {
     this.loadPhotos();

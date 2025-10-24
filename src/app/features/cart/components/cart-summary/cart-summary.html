@@ -1,0 +1,30 @@
+<div class="container-panier">
+  <div class="head">
+    <h2>Panier</h2>
+    <p>votre panier contient : {{pCount()}} article-s</p>
+    <button (click)="clear()" class="btn-primary">Vider votre panier</button>
+  </div>
+
+  <div class="product-list-panier">
+    @for (product of products(); track product.id) {
+      <div class="product-panier">
+        <img [src]="product.imageUrl" [alt]="product.name"
+             class="product-image"
+             [routerLink]="['/products/',
+           product.id]"
+        >
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+
+        <div class="product-meta">
+          <span class="product-price">{{ product.price }}€</span>
+          <span class="product-rating">⭐ {{ product.rating }}/5</span>
+        </div>
+        <button (click)="remove(product)">Supprimer</button>
+      </div>
+    } @empty {
+      <p>Votre panier est vide</p>
+    }
+    <p>Total à payer : {{total()}}</p>
+  </div>
+</div>

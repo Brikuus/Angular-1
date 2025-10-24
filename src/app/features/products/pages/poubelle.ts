@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {Counter} from '../components/counter/counter';
 import {Temperature} from '../components/temperature/temperature';
 import {LikeCounter} from '../components/like-counter/like-counter';
-import {UserList} from '../components/user-list/user-list';
+import {UserList} from '../../user/components/user-list/user-list';
 
 @Component({
   selector: 'app-poubelle',

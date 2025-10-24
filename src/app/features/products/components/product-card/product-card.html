@@ -1,7 +1,10 @@
 <div class="product-card">
   <div class="product-image-container">
-    <img [src]="product().imageUrl" [alt]="product().name" class="product-image"
-         [routerLink]="['/products/', product().id]">
+    <img [src]="product().imageUrl" [alt]="product().name"
+         class="product-image"
+         [routerLink]="['/products/',
+         product().id]"
+    >
     <button
       (click)="onToggleFavorite()"
       class="favorite-btn">
@@ -20,7 +23,7 @@
 
     <div class="product-actions">
       @if (product().inStock) {
-        <button (click)="onAddToCart()" class="btn-primary">
+        <button (click)="onAddToCart(product())" class="btn-primary">
           Ajouter au panier
         </button>
       } @else {

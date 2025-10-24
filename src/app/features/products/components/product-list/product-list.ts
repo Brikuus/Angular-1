@@ -4,6 +4,7 @@ import { ProductCard} from '../product-card/product-card';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Filter} from '../filter/filter';
+import {CartStore} from '../../../cart/services/cart.store';
 
 @Component({
   selector: 'app-product-list',
@@ -14,9 +15,10 @@ import {Filter} from '../filter/filter';
 })
 export class ProductList implements OnInit {
   products: ProductModel[] = [];
-  cartItems: ProductModel[] = [];
   favoriteIds: number[] = [];
-  category = signal('')
+  category = signal('');
+
+  private cartStore = inject(CartStore);
 
   private route=inject(ActivatedRoute);
 
@@ -26,12 +28,6 @@ export class ProductList implements OnInit {
 
   private loadProducts(): void {
     this.products = this.route.snapshot.data['products'];
-  }
-
-  onProductAddedToCart(product: ProductModel): void {
-    this.cartItems.push(product);
-    console.log(`${product.name} ajouté au panier !`);
-    console.log(`Panier: ${this.cartItems.length} articles`);
   }
 
   onProductAddedToFavorites(product: ProductModel): void {
@@ -59,12 +55,12 @@ export class ProductList implements OnInit {
 
 
   // Méthodes utilitaires
-  isInFavorites(productId: number): boolean {
-    return this.favoriteIds.includes(productId);
+  getCartCount(): number {
+    return this.cartStore.productsCount();
   }
 
-  getCartCount(): number {
-    return this.cartItems.length;
+  isInFavorites(productId: number): boolean {
+    return this.favoriteIds.includes(productId);
   }
 
   getFavoritesCount(): number {

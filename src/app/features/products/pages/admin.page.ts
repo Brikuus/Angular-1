@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {Auth} from '../../../auth';
+
 
 @Component({
   selector: 'app-admin',

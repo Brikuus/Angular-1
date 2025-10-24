@@ -1,9 +1,10 @@
-import { Component, effect, input, output } from '@angular/core';
+import {Component, effect, inject, input, output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductModel } from '../../models/product.model'
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoteForm } from '../note-form/note-form';
+import {CartStore} from '../../../cart/services/cart.store';
 
 @Component({
   selector: 'app-product-card',
@@ -15,10 +16,11 @@ import { NoteForm } from '../note-form/note-form';
 export class ProductCard {
   protected showRatingForm: boolean = false;
 
+  private cartStore = inject(CartStore);
+
 
   product = input.required<ProductModel>();
 
-  productAddedToCart = output<ProductModel>();
   productAddedToFavorites = output<ProductModel>();
   productRemovedFromFavorites = output<ProductModel>();
 
@@ -26,14 +28,16 @@ export class ProductCard {
 
   isFavorite = input<boolean>(false);
 
+
+
   constructor() {
     effect(() => {
       console.log('Nouveau Produit reçu :', this.product().name);
     });
   }
 
-  onAddToCart(): void {
-    this.productAddedToCart.emit(this.product());
+  onAddToCart(product: ProductModel): void {
+    this.cartStore.addToCart(product);
   }
 
   onToggleFavorite(): void {
