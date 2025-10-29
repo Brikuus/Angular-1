@@ -1,7 +1,8 @@
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {CartStore} from '../../services/cart.store';
 import {ProductModel} from '../../../products/models/product.model';
 import {RouterLink} from '@angular/router';
+import {CartFacade} from '../../services/cart.facade';
 
 
 
@@ -14,22 +15,22 @@ import {RouterLink} from '@angular/router';
   styleUrl: './cart-summary.scss'
 })
 export class CartSummary {
+  private cartFacade = inject(CartFacade);
   private cartStore = inject(CartStore);
 
-  // Signals exposés
   products = this.cartStore.products;
   pCount = this.cartStore.productsCount;
 
   remove(product: ProductModel): void {
-    this.cartStore.removeFromCart(product);
+    this.cartFacade.removeProduct(product);
   }
 
   clear(): void {
-    this.cartStore.clearCart();
+    this.cartFacade.clearCart();
   }
 
-  total(): number {
-    return this.cartStore.productsTotal();
+  total(): Promise<number> {
+    return this.cartFacade.totalCart();
   }
 
 }

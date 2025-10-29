@@ -4,7 +4,7 @@ import { ProductModel } from '../../models/product.model'
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoteForm } from '../note-form/note-form';
-import {CartStore} from '../../../cart/services/cart.store';
+import {CartFacade} from '../../../cart/services/cart.facade';
 
 @Component({
   selector: 'app-product-card',
@@ -16,7 +16,7 @@ import {CartStore} from '../../../cart/services/cart.store';
 export class ProductCard {
   protected showRatingForm: boolean = false;
 
-  private cartStore = inject(CartStore);
+  private cartFacade = new CartFacade();
 
 
   product = input.required<ProductModel>();
@@ -37,7 +37,7 @@ export class ProductCard {
   }
 
   onAddToCart(product: ProductModel): void {
-    this.cartStore.addToCart(product);
+    this.cartFacade.addProduct(product);
   }
 
   onToggleFavorite(): void {

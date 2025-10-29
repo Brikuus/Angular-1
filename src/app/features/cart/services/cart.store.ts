@@ -37,6 +37,6 @@ export class CartStore {
   }
 
   clearCart = () => {
-    this.cartProducts.set([])
+    this.cartProducts.set([]);
   }
 }
