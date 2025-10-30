@@ -30,7 +30,7 @@ describe('CartFacade.addProduct (integration)', () => {
   });
 
   it('should call API, update store and return cart item', async () => {
-    const dto = { name: 'Potion', description: 'Bla bLa blA', price: 50, imageUrl: '', category:'magic', inStock: true, stock: 1, rating: 4};
+    const dto = {id: 100,  name: 'Potion', description: 'Bla bLa blA', price: 50, imageUrl: '', category:'magic', inStock: true, stock: 1, rating: 4};
     const mockResponse = { ...dto, id: 123 };
 
     const promise = facade.addProduct(dto);
@@ -46,17 +46,18 @@ describe('CartFacade.addProduct (integration)', () => {
   });
 
   it('should call API, update store and remove cart item', async () => {
-    const productToRemove = { id: 1, name: 'Potion', description: 'Bla bLa blA', price: 50, imageUrl: '', category:'magic', inStock: true, stock: 1, rating: 4};
+    const productToRemove = { id: 101, name: 'Potion', description: 'Bla bLa blA', price: 50, imageUrl: '', category:'magic', inStock: true, stock: 1, rating: 4};
 
    store.addToCart(productToRemove);
-   const promise = await facade.removeProduct(productToRemove);
+   const promise = facade.removeProduct(productToRemove);
 
-    const req = http.expectOne('/products/1');
+    const req = http.expectOne('/products/101');
     expect(req.request.method).toBe('DELETE');
-    expect(req.request.body).toBeTrue();
+    expect(req.request.body).toBeNull();
 
+    req.flush(null);
 
-    // const result = await promise;
+    const result = await promise;
     // expect(result.id).toBe(123);
     expect(store.products()).toEqual([]);
   });

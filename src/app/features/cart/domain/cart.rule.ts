@@ -5,12 +5,8 @@ import {CartStore} from '../services/cart.store';
 export class CartRule {
   private totalMax = 5000;
 
-  validateId(product: ProductModel): boolean {
+  validateAdd(product: ProductModel, totalOfProducts: number): boolean {
     if (product.id === null || product.id < 0 || product.id === undefined) throw new Error('Product not found');
-    return true;
-  }
-
-  validateAdd(product: Omit<ProductModel, 'id'>, totalOfProducts: number): boolean {
     if (product.price === undefined || product.price <= 0 || product.price === null) throw new Error('Product does not have a price');
     if (totalOfProducts > this.totalMax) throw new Error('Total amount is too high');
     if (product.stock <= 0) throw new Error('There is no stock');

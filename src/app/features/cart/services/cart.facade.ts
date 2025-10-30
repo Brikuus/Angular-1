@@ -14,46 +14,34 @@ export class CartFacade {
   //private notification = inject(Notification);
 
 
-  async addProduct(product: Omit<ProductModel, 'id'>): Promise<ProductModel>{
-    const res = this.cartRule.validateAdd(product, this.cartStore.productsTotal());
-    if (!res) {
-      console.log("error");
-    }
-
-    const added = await this.cartApi.addProduct(product);
-    this.cartStore.addToCart(added);
+  async addProduct(product: ProductModel): Promise<ProductModel>{
+    this.cartRule.validateAdd(product, this.cartStore.productsTotal());
+    await this.cartApi.addProduct(product);
+    this.cartStore.addToCart(product);
     //this.notification.showSuccess('Produit ajouté avec succès 🎉');
 
-    return added;
+    return product;
   }
 
   async removeProduct(product: ProductModel): Promise<void>{
     this.cartRule.validateRemove(this.cartStore.products().indexOf(product), product.id);
-    const removed = await this.cartApi.removeProduct(product.id);
+    await this.cartApi.removeProduct(product.id);
     this.cartStore.removeFromCart(product);
     //this.notification.showSuccess('Produit supprimé avec succès 🎉');
 
-    return removed;
+    return;
   }
 
-  async clearCart(): Promise<void>{
-    const res = this.cartRule.validateClear(this.cartStore.productsCount());
-    if (!res) {
-      console.log("error");
-    }
-
+  clearCart(): void{
+    this.cartRule.validateClear(this.cartStore.productsCount());
     this.cartApi.clearCart();
     this.cartStore.clearCart();
     //this.notification.showSuccess('Panier vidé avec succès 🎉');
   }
 
-  async totalCart(): Promise<number>{
-    const res = this.cartRule.validateTotal(this.cartStore.productsTotal());
-    if (!res) {
-      console.log("error");
-    }
-
-    this.cartApi.totalCart();
+  totalCart(): number{
+    this.cartRule.validateTotal(this.cartStore.productsTotal());
+    //this.cartApi.totalCart();
     return this.cartStore.productsTotal();
     //this.notification.showSuccess('total trouvé avec succès 🎉');
   }

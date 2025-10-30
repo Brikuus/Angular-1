@@ -29,7 +29,7 @@ describe('CartRule (unit tests)', () => {
   it ('should throw if product has no id', () => {
     const invalidID= {...product, id: -1};
 
-    expect(() => cartRule.validateId(invalidID)).toThrowError("Product not found");
+    expect(() => cartRule.validateAdd(invalidID, 100)).toThrowError("Product not found");
   });
 
   it ('should throw if stock is zero', () => {

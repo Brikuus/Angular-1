@@ -12,16 +12,11 @@ export class CartStore {
   productsCount = computed(() => this.cartProducts().length);
 
   productsTotal = computed(() => {
-    if (this.productsCount() === 0) {
-      return 0;
-    }
-    else {
       let total: number = 0;
       this.cartProducts().forEach((product: ProductModel) => {
         total += product.price;
       })
       return total;
-    }
   });
 
   addToCart = (product: ProductModel): void => {

@@ -23,7 +23,7 @@
 
     <div class="product-actions">
       @if (product().inStock) {
-        <button (click)="onAddToCart(product())" class="btn-primary">
+        <button (click)="onAddToCart(product())" class="btn-primary" id="test">
           Ajouter au panier
         </button>
       } @else {

@@ -8,15 +8,17 @@ import {BaseApi} from '../../../shared/services/base.api';
 export class CartApi extends BaseApi{
   private readonly endpoint = '/products';
 
-  addProduct(product: Omit<ProductModel, 'id'>): Promise<ProductModel> {
+  async addProduct(product: ProductModel): Promise<void> {
   console.log('produit ajouté!');
-  return this.post<ProductModel>(`${this.endpoint}`, product);
+  //await this.post<ProductModel>(`${this.endpoint}`, product);
+  return;
   }
 
-  removeProduct(productId: number): Promise<boolean> {
+  async removeProduct(productId: number): Promise<void> {
     console.log('produit supprimé!');
-    this.delete<void>(`${this.endpoint}/${productId}`);
-    return Promise.resolve(true);
+    return;
+    //this.delete<void>(`${this.endpoint}/${productId}`);
+
   }
 
   clearCart(): void {

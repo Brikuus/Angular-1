@@ -29,7 +29,7 @@ export class CartSummary {
     this.cartFacade.clearCart();
   }
 
-  total(): Promise<number> {
+  total(): number {
     return this.cartFacade.totalCart();
   }
 

@@ -1,4 +1,4 @@
-import {Component, effect, inject, input, output} from '@angular/core';
+import {Component, effect, input, output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductModel } from '../../models/product.model'
 import { RouterLink } from '@angular/router';
