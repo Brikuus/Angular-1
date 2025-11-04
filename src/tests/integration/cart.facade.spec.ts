@@ -6,7 +6,6 @@ import {TestBed} from '@angular/core/testing';
 import {provideZonelessChangeDetection} from '@angular/core';
 import {CartApi} from '../../app/features/cart/services/cart.api';
 import {ProductModel} from '../../app/features/products/models/product.model';
-import {environment} from '../../environments/environment';
 
 describe('CartFacade.addProduct (integration)', () => {
   let facade: CartFacade;
@@ -36,7 +35,7 @@ describe('CartFacade.addProduct (integration)', () => {
 
     const promise = facade.addProduct(dto);
 
-    const req = http.expectOne(`${environment.apiUrl}/products`);
+    const req = http.expectOne('/products');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(dto);
 
@@ -52,7 +51,7 @@ describe('CartFacade.addProduct (integration)', () => {
    store.addToCart(productToRemove);
    const promise = facade.removeProduct(productToRemove);
 
-    const req = http.expectOne(`${environment.apiUrl}/products/101`);
+    const req = http.expectOne('/products/101');
     expect(req.request.method).toBe('DELETE');
     expect(req.request.body).toBeNull();
 
