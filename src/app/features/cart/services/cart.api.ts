@@ -6,7 +6,7 @@ import {BaseApi} from '../../../shared/services/base.api';
   providedIn: 'root'
 })
 export class CartApi extends BaseApi{
-  private readonly endpoint = '/products';
+  private readonly endpoint = '/products.json';
 
   async addProduct(product: ProductModel): Promise<void> {
   console.log('produit ajouté!');
@@ -16,8 +16,9 @@ export class CartApi extends BaseApi{
 
   async removeProduct(productId: number): Promise<void> {
     console.log('produit supprimé!');
-    return;
     //this.delete<void>(`${this.endpoint}/${productId}`);
+    return;
+
 
   }
 
